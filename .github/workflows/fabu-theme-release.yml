@@ -1,4 +1,4 @@
-name: theme-fabu
+name: fabu-theme-release
 on:
   workflow_dispatch:
   # schedule:
@@ -22,6 +22,6 @@ jobs:
         with:
           code: |
             x ws cd-source-code || return
-            xws fabu
+            xws fabu-release
 
 
