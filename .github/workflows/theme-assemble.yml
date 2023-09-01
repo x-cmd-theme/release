@@ -21,4 +21,5 @@ jobs:
         uses: x-cmd/action@main
         with:
           code: |
-            x ws theme-assemble || true
+            x ws cd-source-code || return
+            xws dist
