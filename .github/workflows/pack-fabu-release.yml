@@ -1,8 +1,8 @@
-name: fabu-theme-release
+name: pack
 on:
   workflow_dispatch:
   # schedule:
-  #   - cron: '15 5,23 * * *'
+  #   - cron: '0 23 * * *'
 
 jobs:
   release-worker:
@@ -12,7 +12,6 @@ jobs:
       ___X_CMD_GHACTION_X: x2
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       GITCODE_TOKEN: ${{ secrets.GITCODE_TOKEN_SYNC }}
-      QYWX_BOT_RELEASE_WEBHOOK: ${{ secrets.QYWX_BOT_RELEASE_WEBHOOK }}
       ssh_key: ${{ secrets.SSH_QIAKAI_KEY }}
       git_user: l
       git_email: l@x-cmd.com
@@ -23,6 +22,4 @@ jobs:
         with:
           code: |
             x ws cd-source-code || return
-            xws fabu-release
-
-
+            xws pack-fabu-release
