@@ -1,5 +1,3 @@
-pwd
-ls -lah
 repo=x-cmd-theme
 x rmrf "$repo"
 x:info "正在下载 x-cmd-theme/$repo"
