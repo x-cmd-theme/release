@@ -23,4 +23,4 @@ jobs:
         with:
           code: |
             x ws cd-source-code || return
-            xws pack-fabu-release
+            x ws pack-fabu-release

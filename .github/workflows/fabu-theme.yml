@@ -23,6 +23,6 @@ jobs:
         with:
           code: |
             x ws cd-source-code || return
-            xws fabu
+            x ws fabu
 
 
