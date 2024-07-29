@@ -1,6 +1,10 @@
 name: pack
 on:
   workflow_dispatch:
+    inputs:
+      pack-theme-items:
+        description: 'pack theme items'
+        required: false
   # schedule:
   #   - cron: '0 23 * * *'
 
@@ -16,6 +20,7 @@ jobs:
       git_user: l
       git_email: l@x-cmd.com
       CONCURRENCY: 10
+      INPUTS_PACK_THEME_ITEMS: ${{ github.event.inputs.pack-theme-items }}
     steps:
       - name: main
         uses: x-cmd/action@main
