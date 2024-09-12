@@ -1,0 +1,45 @@
+# shellcheck shell=dash
+
+fabu_font(){
+    local tar_name='FiraCodeNerdFont-Regular.tar.xz'
+    local url='https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/FiraCode.tar.xz'
+    ___x_cmd curl -L "$url" --output aaa.tar.xz || return
+    ___x_cmd uz aaa.tar.xz aaa || return
+    [ -f 'aaa/FiraCodeNerdFont-Regular.ttf' ] || return
+    ___x_cmd rmrf "$(x wsroot)/font/$tar_name"
+    ___x_cmd z "$(x wsroot)/font/$tar_name" 'aaa/FiraCodeNerdFont-Regular.ttf'
+    ___x_cmd rmrf aaa aaa.tar.xz
+
+    [ "$(git status -s | wc -l)" -ge 1 ] || return
+
+    (
+        x:info "提交并推送 x-cmd-theme/release"
+        git add font
+        git status -s
+        git commit -m "build: :package: release font bundle $tar_name"
+        git push origin main || return
+    )
+
+    local repo=theme
+    x rmrf "$repo"
+    x:info "正在下载 x-cmd/$repo"
+    git clone git@github.com:x-cmd/"$repo" || {
+        x:error "Fail to clone from x-cmd/$repo"
+        return 1
+    }
+    command cp -rf "$(x wsroot)/font/$tar_name" "$repo/font"
+
+    (
+        x:info "提交并推送 x-cmd/$repo"
+        x cd "$repo"
+        git add dist
+        git status -s
+        git commit -m "build: :package: release font bundle $tar_name"
+        x ws push || return
+        # [ -z "$QYWX_BOT_RELEASE_WEBHOOK" ] || x qywx --cfg "webhook=$QYWX_BOT_RELEASE_WEBHOOK"
+        # x qywx --send --markdown  "### 🔔 x-cmd/theme $tar_name 资源包更新成功：[github](https://github.com/x-cmd/theme) [gitcode](https://gitcode.net/x-cmd/theme)"
+
+    )
+}
+
+fabu_font
