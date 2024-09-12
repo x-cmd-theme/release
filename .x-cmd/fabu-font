@@ -10,8 +10,6 @@ fabu_font(){
     ___x_cmd z "$(x wsroot)/font/$tar_name" 'aaa/FiraCodeNerdFont-Regular.ttf'
     ___x_cmd rmrf aaa aaa.tar.xz
 
-    [ "$( ___x_cmd_cmds git status -s | wc -l )" -ge 1 ] || return
-
     (
         x:info "提交并推送 x-cmd-theme/release"
         ___x_cmd_cmds git add font
