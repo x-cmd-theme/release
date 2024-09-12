@@ -32,7 +32,7 @@ fabu_font(){
     (
         x:info "提交并推送 x-cmd/$repo"
         ___x_cmd_cmds cd "$repo"
-        ___x_cmd_cmds git add dist
+        ___x_cmd_cmds git add font
         ___x_cmd_cmds git status -s
         ___x_cmd_cmds git commit -m "build: :package: release font bundle $tar_name"
         ___x_cmd ws push || return
