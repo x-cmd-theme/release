@@ -7,7 +7,9 @@ fabu_font(){
     ___x_cmd uz aaa.tar.xz aaa || return
     [ -f 'aaa/FiraCodeNerdFont-Regular.ttf' ] || return
     ___x_cmd rmrf "$(x wsroot)/font/$tar_name"
-    ___x_cmd z "$(x wsroot)/font/$tar_name" 'aaa/FiraCodeNerdFont-Regular.ttf'
+    (
+        ___x_cmd_cmds cd aaa && ___x_cmd z "$(x wsroot)/font/$tar_name" 'FiraCodeNerdFont-Regular.ttf'
+    )
     ___x_cmd rmrf aaa aaa.tar.xz
 
     (
@@ -21,11 +23,11 @@ fabu_font(){
     local repo=theme
     ___x_cmd rmrf "$repo"
     x:info "正在下载 x-cmd/$repo"
-    git clone git@github.com:x-cmd/"$repo" || {
+    ___x_cmd_cmds git clone git@github.com:x-cmd/"$repo" || {
         x:error "Fail to clone from x-cmd/$repo"
         return 1
     }
-    command cp -rf "$(x wsroot)/font/$tar_name" "$repo/font"
+    ___x_cmd_cmds cp -rf "$(x wsroot)/font/$tar_name" "$repo/font"
 
     (
         x:info "提交并推送 x-cmd/$repo"
