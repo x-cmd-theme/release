@@ -10,18 +10,18 @@ fabu_font(){
     ___x_cmd z "$(x wsroot)/font/$tar_name" 'aaa/FiraCodeNerdFont-Regular.ttf'
     ___x_cmd rmrf aaa aaa.tar.xz
 
-    [ "$(git status -s | wc -l)" -ge 1 ] || return
+    [ "$( ___x_cmd_cmds git status -s | wc -l )" -ge 1 ] || return
 
     (
         x:info "提交并推送 x-cmd-theme/release"
-        git add font
-        git status -s
-        git commit -m "build: :package: release font bundle $tar_name"
-        git push origin main || return
+        ___x_cmd_cmds git add font
+        ___x_cmd_cmds git status -s
+        ___x_cmd_cmds git commit -m "build: :package: release font bundle $tar_name"
+        ___x_cmd_cmds git push origin main || return
     )
 
     local repo=theme
-    x rmrf "$repo"
+    ___x_cmd rmrf "$repo"
     x:info "正在下载 x-cmd/$repo"
     git clone git@github.com:x-cmd/"$repo" || {
         x:error "Fail to clone from x-cmd/$repo"
@@ -31,11 +31,11 @@ fabu_font(){
 
     (
         x:info "提交并推送 x-cmd/$repo"
-        x cd "$repo"
-        git add dist
-        git status -s
-        git commit -m "build: :package: release font bundle $tar_name"
-        x ws push || return
+        ___x_cmd_cmds cd "$repo"
+        ___x_cmd_cmds git add dist
+        ___x_cmd_cmds git status -s
+        ___x_cmd_cmds git commit -m "build: :package: release font bundle $tar_name"
+        ___x_cmd ws push || return
         # [ -z "$QYWX_BOT_RELEASE_WEBHOOK" ] || x qywx --cfg "webhook=$QYWX_BOT_RELEASE_WEBHOOK"
         # x qywx --send --markdown  "### 🔔 x-cmd/theme $tar_name 资源包更新成功：[github](https://github.com/x-cmd/theme) [gitcode](https://gitcode.net/x-cmd/theme)"
 
