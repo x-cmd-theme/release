@@ -3,16 +3,32 @@ fun_gen(){
     local dir="$1"
     local name="$2"
     local file="$dir/$name"
-    COLUMNS=100 SHELL=/bin/bash command script -q "$file" <<A
+    local tmpfile="${file}.tmp"
+    COLUMNS=100 SHELL=/bin/bash command script -q "$tmpfile" <<A
 [ -z "$CI" ] || . ~/.x-cmd.root/X
-echo \"\$0: \$COLUMNS: demo-start\"
 x ohmyposh try $name
+echo "demo-start"
 false
 true
-ls -lah
+cd ~/.x-cmd.root; ls
 echo "demo-stop"
 exit
 A
+
+    < "$tmpfile" command awk '
+        s==1{
+            if (($0 ~ "^(\033\\[\\?2004l\r)?demo-stop") || ($0 ~ "^Script done")) {
+                s=2;
+            } else {
+                _RES = _RES $0 "\n";
+            }
+        }
+        (NR!=1)&&(s!=1){
+            if ($0 ~ "^(\033\\[\\?2004l\r)?demo-start") s=1;
+        }
+        END{ gsub(/(^[\n\r]+)|([\n\r]+$)/, "", _RES); printf("%s\n", _RES); }' > "$file"
+
+    ___x_cmd rmrf "$tmpfile"
 }
 
 
@@ -28,7 +44,7 @@ fun_main(){
     local l
     printf "%s\n" 1_shell M365Princess agnoster.minimal | while read -r l; do
         x:info "Gen oh-my-posxh theme $l"
-        fun_gen "$dir" "$l"
+        fun_gen "$dir" "$l" || return
     done
 
     local tarname="$WSROOT/dist/ohmyposh.theme.tar.xz"
