@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
     inputs:
       modname:
-        description: 'pack theme items'
+        description: 'third party mod name'
         required: false
   # schedule:
   #   - cron: '0 23 * * *'
