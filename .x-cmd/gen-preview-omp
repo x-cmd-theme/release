@@ -1,4 +1,4 @@
-WSROOT="$( ___x_cmd wsroot)"
+WSROOT="$( ___x_cmd wsroot )"
 fun_gen(){
     local dir="$1"
     local name="$2"
@@ -18,15 +18,18 @@ fun_main(){
     local dir="$WSROOT/.tmp.omp"
     ___x_cmd rmrf "$dir"; ___x_cmd mkdirp "$dir"
 
+    # prepare
+    ___x_cmd ohmyposh raw --help 2>/dev/null >&2
+    ___x_cmd ohmyposh ls 2>/dev/null >&2
+
     local l
-    # ___x_cmd ohmyposh ls
     printf "%s\n" M365Princess agnoster.minimal | while read -r l; do
         x:info "Gen oh-my-posxh theme $l"
         fun_gen "$dir" "$l"
     done
 
-    local tarname="$WSROOT/dist/oh-my-posh.theme.tar.xz"
-    ___x_cmd z "$WSROOT/dist/ohmyposh.theme.tar.xz" "$dir" || return
+    local tarname="$WSROOT/dist/ohmyposh.theme.tar.xz"
+    ___x_cmd z "$tarname" "$dir" || return
     ___x_cmd rmrf "$dir"
 
     if [ -n "$CI" ]; then
