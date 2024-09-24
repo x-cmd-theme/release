@@ -1,6 +1,10 @@
 name: fabu-theme
 on:
   workflow_dispatch:
+    inputs:
+      version:
+        description: 'theme version'
+        required: false
   # schedule:
   #   - cron: '15 5,23 * * *'
 
@@ -17,6 +21,7 @@ jobs:
       git_user: l
       git_email: l@x-cmd.com
       CONCURRENCY: 10
+      FABU_THEME_VERSION: ${{ github.event.inputs.version }}
     steps:
       - name: main
         uses: x-cmd/action@main
