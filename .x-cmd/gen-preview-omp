@@ -28,7 +28,7 @@ fun_main(){
     done
 
     local tarname="$WSROOT/dist/ohmyposh.theme.tar.xz"
-    { cd "$dir" && ___x_cmd z "$tarname" ./* ; } || return
+    ( \cd "$dir" && ___x_cmd z "$tarname" ./* ; ) || return
     ___x_cmd rmrf "$dir"
 
     if [ -n "$CI" ]; then
