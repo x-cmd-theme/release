@@ -48,7 +48,7 @@ fun_main(){
         fun_gen "$modname" "$dir" "$l" || return
     done
 
-    local tarname="$WSROOT/dist/$modname.theme.tar.xz"
+    local tarname="$WSROOT/dist/$modname.preview.tar.xz"
     ( ___x_cmd rmrf "$tarname" ; cd "$dir" && ___x_cmd z "$tarname" ./* ; ) || return
     ___x_cmd rmrf "$dir"
 
