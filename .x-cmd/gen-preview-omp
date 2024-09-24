@@ -7,6 +7,9 @@ fun_gen(){
 [ -z "$CI" ] || . ~/.x-cmd.root/X
 echo \"\$0: \$COLUMNS: demo-start\"
 x ohmyposh try $name
+false
+true
+ls -lah
 echo "demo-stop"
 exit
 A
@@ -19,6 +22,7 @@ fun_main(){
 
     # prepare
     ___x_cmd ohmyposh raw --help 2>/dev/null >&2
+    ___x_cmd ohmyposh raw upgrade 2>/dev/null >&2
     ___x_cmd ohmyposh ls 2>/dev/null >&2
 
     local l
