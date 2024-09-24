@@ -18,7 +18,7 @@ A
     < "$tmpfile" command awk '
         s==1{
             if (($0 ~ "^(\033\\[\\?2004l\r)?demo-stop") || ($0 ~ "^Script done")) {
-                s=2;
+                _RES = _RES $0 "\n"; s=2;
             } else {
                 _RES = _RES $0 "\n";
             }
@@ -42,7 +42,8 @@ fun_main(){
     ___x_cmd ohmyposh ls 2>/dev/null >&2
 
     local l
-    printf "%s\n" 1_shell M365Princess agnoster.minimal | while read -r l; do
+    # printf "%s\n" 1_shell M365Princess agnoster.minimal
+    ___x_cmd ohmyposh ls | while read -r l; do
         x:info "Gen oh-my-posxh theme $l"
         fun_gen "$dir" "$l" || return
     done
