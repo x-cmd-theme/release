@@ -23,7 +23,7 @@ fun_main(){
     ___x_cmd ohmyposh ls 2>/dev/null >&2
 
     local l
-    printf "%s\n" M365Princess agnoster.minimal | while read -r l; do
+    printf "%s\n" 1_shell M365Princess agnoster.minimal | while read -r l; do
         x:info "Gen oh-my-posxh theme $l"
         fun_gen "$dir" "$l"
     done
