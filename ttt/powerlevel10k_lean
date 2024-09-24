@@ -1,6 +1,0 @@
-[38;2;119;228;247m~/work/release/release/ws [0m[38;2;255;231;0mmain [0m[38;2;67;212;38m❯ [0mfalse
-[38;2;119;228;247m~/work/release/release/ws [0m[38;2;255;231;0mmain [0m[38;2;67;212;38m❯ [0mtrue
-[38;2;119;228;247m~/work/release/release/ws [0m[38;2;255;231;0mmain [0m[38;2;67;212;38m❯ [0mcd ~/.x-cmd.root; ls
-X  bin  boot  global  local  v
-[38;2;119;228;247m~/.x-cmd.root [0m[38;2;67;212;38m❯ [0mecho "demo-stop"
-demo-stop

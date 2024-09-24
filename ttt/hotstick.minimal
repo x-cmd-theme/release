@@ -1,6 +1,0 @@
-[94m[0m[104m[30m ~/work/../../ws [0m[94m[0m[0m[33;49m[7m[0m[43m[30m  main ?1 [0m[33m[0m]0;ws :: bash false
-[94m[0m[104m[30m ~/work/../../ws [0m[94m[0m[0m[33;49m[7m[0m[43m[30m  main ?1 [0m[33m[0m]0;ws :: bash true
-[94m[0m[104m[30m ~/work/../../ws [0m[94m[0m[0m[33;49m[7m[0m[43m[30m  main ?1 [0m[33m[0m]0;ws :: bash cd ~/.x-cmd.root; ls
-X  bin  boot  global  local  v
-[94m[0m[104m[30m ~/.x-cmd.root [0m[94m[0m]0;.x-cmd.root :: bash echo "demo-stop"
-demo-stop
