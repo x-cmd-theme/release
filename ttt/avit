@@ -1,0 +1,10 @@
+[38;2;255;255;255m~/work/release/release/ws [0m[38;2;194;194;6mmain [0m
+[38;2;0;122;204m[0m false
+[38;2;255;255;255m~/work/release/release/ws [0m[38;2;194;194;6mmain [0m[38;2;201;74;22mxERROR [0m
+[38;2;0;122;204m[0m true
+[38;2;255;255;255m~/work/release/release/ws [0m[38;2;194;194;6mmain [0m
+[38;2;0;122;204m[0m cd ~/.x-cmd.root; ls
+X  bin  boot  global  local  v
+[38;2;255;255;255m~/.x-cmd.root [0m
+[38;2;0;122;204m[0m echo "demo-stop"
+demo-stop

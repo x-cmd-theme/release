@@ -9,9 +9,9 @@ fun_gen(){
 [ -z "$CI" ] || . ~/.x-cmd.root/X
 x $modname try $name
 echo "demo-start"
+cd ~/.x-cmd.root; ls
 false
 true
-cd ~/.x-cmd.root; ls
 echo "Mission Accomplished"
 exit
 A

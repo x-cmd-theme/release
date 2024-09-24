@@ -1,0 +1,10 @@
+[38;2;255;221;134mrunner@fv-az1773-635 [0m[38;2;66;169;255m~/work/release/release/ws [0m[37mgit:[38;2;255;221;134mmain[37m [38;2;209;105;113m?1[0m
+[38;2;255;221;134m> [0mfalse
+[38;2;255;221;134mrunner@fv-az1773-635 [0m[38;2;66;169;255m~/work/release/release/ws [0m[37mgit:[38;2;255;221;134mmain[37m [38;2;209;105;113m?1[0m
+[38;2;66;169;255m> [0mtrue
+[38;2;255;221;134mrunner@fv-az1773-635 [0m[38;2;66;169;255m~/work/release/release/ws [0m[37mgit:[38;2;255;221;134mmain[37m [38;2;209;105;113m?1[0m
+[38;2;255;221;134m> [0mcd ~/.x-cmd.root; ls
+X  bin  boot  global  local  v
+[38;2;255;221;134mrunner@fv-az1773-635 [0m[38;2;66;169;255m~/.x-cmd.root [0m
+[38;2;255;221;134m> [0mecho "demo-stop"
+demo-stop

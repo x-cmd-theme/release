@@ -1,0 +1,10 @@
+[94m# [0m[36mrunner[49m[37m [90m@[49m[37m [32mfv-az1773-635[49m[37m [0m[90min [49m[93m~/work/release/release/ws [0m[90mon[49m[37m git:[36mmain[49m[37m[31m x[49m[37m [0m[90m[08:31:36][0m
+[91m$[0m false
+[94m# [0m[36mrunner[49m[37m [90m@[49m[37m [32mfv-az1773-635[49m[37m [0m[90min [49m[93m~/work/release/release/ws [0m[90mon[49m[37m git:[36mmain[49m[37m[31m x[49m[37m [0m[90m[08:31:36][0m[31m C:1 [0m
+[91m$[0m true
+[94m# [0m[36mrunner[49m[37m [90m@[49m[37m [32mfv-az1773-635[49m[37m [0m[90min [49m[93m~/work/release/release/ws [0m[90mon[49m[37m git:[36mmain[49m[37m[31m x[49m[37m [0m[90m[08:31:36][0m
+[91m$[0m cd ~/.x-cmd.root; ls
+X  bin  boot  global  local  v
+[94m# [0m[36mrunner[49m[37m [90m@[49m[37m [32mfv-az1773-635[49m[37m [0m[90min [49m[93m~/.x-cmd.root [0m[90m[08:31:36][0m
+[91m$[0m echo "demo-stop"
+demo-stop
