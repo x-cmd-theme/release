@@ -1,23 +1,24 @@
 WSROOT="$( ___x_cmd wsroot )"
 fun_gen(){
-    local dir="$1"
-    local name="$2"
+    local modname="${1:-ohmyposh}"
+    local dir="$2"
+    local name="$3"
     local file="$dir/$name"
     local tmpfile="${file}.tmp"
     COLUMNS=100 SHELL=/bin/bash command script -q "$tmpfile" <<A
 [ -z "$CI" ] || . ~/.x-cmd.root/X
-x ohmyposh try $name
+x $modname try $name
 echo "demo-start"
 false
 true
 cd ~/.x-cmd.root; ls
-echo "demo-stop"
+echo "Mission Accomplished"
 exit
 A
 
     < "$tmpfile" command awk '
         s==1{
-            if (($0 ~ "^(\033\\[\\?2004l\r)?demo-stop") || ($0 ~ "^Script done")) {
+            if (($0 ~ "^(\033\\[\\?2004l\r)?Mission Accomplished") || ($0 ~ "^Script done")) {
                 _RES = _RES $0 "\n"; s=2;
             } else {
                 _RES = _RES $0 "\n";
@@ -31,24 +32,23 @@ A
     ___x_cmd rmrf "$tmpfile"
 }
 
-
 fun_main(){
+    local modname="${1:-ohmyposh}"
     local dir="$WSROOT/.tmp.omp"
     ___x_cmd rmrf "$dir"; ___x_cmd mkdirp "$dir"
 
     # prepare
-    ___x_cmd ohmyposh raw --help 2>/dev/null >&2
-    ___x_cmd ohmyposh raw upgrade 2>/dev/null >&2
-    ___x_cmd ohmyposh ls 2>/dev/null >&2
+    ___x_cmd "$modname" raw --help 2>/dev/null >&2
+    ___x_cmd "$modname" ls 2>/dev/null >&2
 
     local l
     # printf "%s\n" 1_shell M365Princess agnoster.minimal
-    ___x_cmd ohmyposh ls | while read -r l; do
-        x:info "Gen oh-my-posxh theme $l"
-        fun_gen "$dir" "$l" || return
+    ___x_cmd "$modname" ls | while read -r l; do
+        x:info "Gen $modname theme $l"
+        fun_gen "$modname" "$dir" "$l" || return
     done
 
-    local tarname="$WSROOT/dist/ohmyposh.theme.tar.xz"
+    local tarname="$WSROOT/dist/$modname.theme.tar.xz"
     ( ___x_cmd rmrf "$tarname" ; cd "$dir" && ___x_cmd z "$tarname" ./* ; ) || return
     ___x_cmd rmrf "$dir"
 
@@ -56,9 +56,9 @@ fun_main(){
         x:info "提交并推送 x-cmd-theme/release"
         git add "$tarname"
         git status -s
-        git commit -m "build: :package: release ohmyposh preview theme package"
+        git commit -m "build: :package: release $modname preview theme package"
         git push git@github.com:"$(x git meta name)"
     fi
 }
 
-fun_main
+fun_main "$THIRD_PARTY_THEME_MODNAME"

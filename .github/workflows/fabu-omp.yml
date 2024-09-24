@@ -1,6 +1,10 @@
-name: fabu-omp
+name: gen-third-party-preview
 on:
   workflow_dispatch:
+    inputs:
+      modname:
+        description: 'pack theme items'
+        required: false
   # schedule:
   #   - cron: '0 23 * * *'
 
@@ -17,9 +21,10 @@ jobs:
       git_user: l
       git_email: l@x-cmd.com
       CONCURRENCY: 10
+      THIRD_PARTY_THEME_MODNAME: ${{ github.event.inputs.modname }}
     steps:
       - name: main
         uses: x-cmd/action@main
         with:
           code: |
-            x ws gen-preview-omp
+            x ws gen-third-party-preview
