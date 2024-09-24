@@ -1,16 +1,0 @@
-Script started on 2024-09-24 07:51:01+00:00 [<not executed on terminal>]
-[ -z "true" ] || . ~/.x-cmd.root/X
-x ohmyposh try "agnoster.minimal"
-false
-true
-cd ~/.x-cmd.root
-exit
-runner@fv-az1980-969:~/work/release/release/ws$ <ease/release/ws$ [ -z "true" ] || . ~/.x-cmd.root/X
-runner@fv-az1980-969:~/work/release/release/ws$ <lease/release/ws$ x ohmyposh try "agnoster.minimal"
-[32m⠁[0m acquiring write lock on prefix                                                [2K[32m⠁[0m acquiring write lock on prefix                                                [2K[32m⠁[0m running activation                                                            [2K<alse                                                                                                                                                                                                                                       <alse
-<rue                                                                                                                                                                                                                                                               <rue
-0 [0m[38;2;0;122;204m [0m<d ~/.x-cmd.root                                                                                                                                                                                                                          <d ~/.x-cmd.root
-[38;2;255;255;255mrunner@fv-az1980-969 [0m[0m[38;2;0;122;204;49m[7m[27m[48;2;0;122;204m[38;2;255;255;255m ~  .x-cmd.root [0m[38;2;0;122;204m [0mexit
-exit
-
-Script done on 2024-09-24 07:51:02+00:00 [COMMAND_EXIT_CODE="0"]

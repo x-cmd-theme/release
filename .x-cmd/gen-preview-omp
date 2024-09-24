@@ -3,12 +3,11 @@ fun_gen(){
     local dir="$1"
     local name="$2"
     local file="$dir/$name"
-    SHELL=/bin/bash command script -q "$file" <<A
+    COLUMNS=100 SHELL=/bin/bash command script -q "$file" <<A
 [ -z "$CI" ] || . ~/.x-cmd.root/X
-x ohmyposh try "$name"
-false
-true
-cd ~/.x-cmd.root
+echo \"\$0: \$COLUMNS: demo-start"
+x ohmyposh try $name
+echo "demo-stop"
 exit
 A
 }
@@ -29,7 +28,7 @@ fun_main(){
     done
 
     local tarname="$WSROOT/dist/ohmyposh.theme.tar.xz"
-    ___x_cmd z "$tarname" "$dir" || return
+    { cd "$dir" && ___x_cmd z "$tarname" ./* ; } || return
     ___x_cmd rmrf "$dir"
 
     if [ -n "$CI" ]; then
