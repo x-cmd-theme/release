@@ -37,7 +37,7 @@ fun_main(){
         git add "$tarname"
         git status -s
         git commit -m "build: :package: release ohmyposh preview theme package"
-        git push origin main
+        git push git@github.com:"$(x git meta name)"
     fi
 }
 
