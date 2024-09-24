@@ -14,7 +14,7 @@ fabu_font(){
 
     (
         x:info "提交并推送 x-cmd-theme/release"
-        git add font
+        git add "$(x wsroot)/font"
         git status -s
         git commit -m "build: :package: release font bundle $tar_name"
         git push git@github.com:"$(x git meta path)" || return

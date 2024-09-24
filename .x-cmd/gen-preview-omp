@@ -1,0 +1,41 @@
+WSROOT="$( ___x_cmd wsroot)"
+fun_gen(){
+    local dir="$1"
+    local name="$2"
+    local file="$dir/$name"
+    SHELL=/bin/bash command script -q "$file" <<A
+[ -z "$CI" ] || . ~/.x-cmd.root/X
+x ohmyposh try "$name"
+false
+true
+cd ~/.x-cmd.root
+exit
+A
+}
+
+
+fun_main(){
+    local dir="$WSROOT/.tmp.omp"
+    ___x_cmd rmrf "$dir"; ___x_cmd mkdirp "$dir"
+
+    local l
+    # ___x_cmd ohmyposh ls
+    printf "%s\n" M365Princess agnoster.minimal | while read -r l; do
+        x:info "Gen oh-my-posxh theme $l"
+        fun_gen "$dir" "$l"
+    done
+
+    local tarname="$WSROOT/dist/oh-my-posh.theme.tar.xz"
+    ___x_cmd z "$WSROOT/dist/ohmyposh.theme.tar.xz" "$dir" || return
+    ___x_cmd rmrf "$dir"
+
+    if [ -n "$CI" ]; then
+        x:info "提交并推送 x-cmd-theme/release"
+        git add "$tarname"
+        git status -s
+        git commit -m "build: :package: release ohmyposh preview theme package"
+        git push origin main
+    fi
+}
+
+fun_main
